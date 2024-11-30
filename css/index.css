@@ -13,6 +13,10 @@ a {
   font-size: 1.5rem;
 }
 
+.blue-text{
+  cursor: pointer;
+}
+
 .sidenav {
   width: 250px;
   padding-top: 15px;
