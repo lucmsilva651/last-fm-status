@@ -29,9 +29,7 @@ async function fetchNowPlaying() {
       if (track.url) {
         document.getElementById('trackLink').innerText = `${track.url}`;
         document.getElementById('trackLink').href = `${track.url}`;
-        document.getElementById('trackLink').classList.add("blue-text");
       } else {
-        document.getElementById('trackLink').classList.add("black-text");
         document.getElementById('trackLink').innerText = "Unknown (N/A)";
       }
       if (track.album["#text"]) {
@@ -69,7 +67,6 @@ async function fetchNowPlaying() {
       document.getElementById('trackTitle').innerText = "None";
       document.getElementById('artistName').innerText = "None";
       document.getElementById('albumName').innerText = "None";
-      document.getElementById('trackLink').classList.add("black-text");
       document.getElementById('trackLink').innerText = "None";
       document.getElementById('trackMbid').innerText = "None";
       document.getElementById('artistMbid').innerText = "None";
