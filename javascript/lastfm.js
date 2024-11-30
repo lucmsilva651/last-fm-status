@@ -1,6 +1,19 @@
 const apiKey = localStorage.getItem("apiKey");
 console.log("reading from localStorage...");
 
+async function resetToFirstState() {
+  console.log("checking if the api key is inserted");
+  if (apiKey || apiKey != null) {
+    document.getElementById('lastNoApi').style.display = "none";
+    document.getElementById('lastStatus').style.display = "none";
+    document.getElementById('lastFirstUi').style.display = "";
+  } else {
+    document.getElementById('lastStatus').style.display = "none";
+    document.getElementById('lastFirstUi').style.display = "none";
+    document.getElementById('lastNoApi').style.display = "";
+  }
+}
+
 
 async function fetchPlayData() {
   const username = document.getElementById("userInput").value;
@@ -94,19 +107,6 @@ async function clearStorage() {
 async function saveToStorage() {
   localStorage.setItem("apiKey", document.getElementById("apiKeyInput").value);
   location.reload();
-}
-
-async function resetToFirstState() {
-  console.log("checking if the api key is inserted");
-  if (apiKey || apiKey != null) {
-    document.getElementById('lastNoApi').style.display = "none";
-    document.getElementById('lastStatus').style.display = "none";
-    document.getElementById('lastFirstUi').style.display = "";
-  } else {
-    document.getElementById('lastStatus').style.display = "none";
-    document.getElementById('lastFirstUi').style.display = "none";
-    document.getElementById('lastNoApi').style.display = "";
-  }
 }
 
 resetToFirstState();
