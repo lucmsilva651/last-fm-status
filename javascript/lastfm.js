@@ -22,6 +22,7 @@ async function fetchNowPlaying() {
       }
       if (track.mbid) {
         document.getElementById('trackMbid').innerText = `${track.mbid}`;
+        document.getElementById('trackMbid').href = `https://musicbrainz.org/recording/${track.mbid}`;
       } else {
         document.getElementById('trackMbid').innerText = "Unknown (N/A)";
       }
@@ -54,11 +55,13 @@ async function fetchNowPlaying() {
       }
       if (track.album.mbid) {
         document.getElementById('albumMbid').innerText = `${track.album.mbid}`;
+        document.getElementById('albumMbid').href = `https://musicbrainz.org/release/${track.album.mbid}`;
       } else {
         document.getElementById('albumMbid').innerText = "Unknown (N/A)";
       }
       if (track.artist.mbid) {
         document.getElementById('artistMbid').innerText = `${track.artist.mbid}`;
+        document.getElementById('artistMbid').href = `https://musicbrainz.org/artist/${track.artist.mbid}`;
       } else {
         document.getElementById('artistMbid').innerText = "Unknown (N/A)";
       }
@@ -72,8 +75,6 @@ async function fetchNowPlaying() {
       document.getElementById('artistMbid').innerText = "None";
       document.getElementById('albumMbid').innerText = "None";
       document.getElementById('albumArtDesc').innerText = "Nothing is playing";
-      document.getElementById('albumArtDesc').href = "";
-      document.getElementById('albumArtDesc').download = "";
       document.getElementById('albumArt').src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
     }
   } catch (error) {
