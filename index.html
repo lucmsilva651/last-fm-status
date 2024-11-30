@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -18,23 +19,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/index.css">
 </head>
-<body class="red white-text darken-1">
+
+<body class="black white-text darken-1">
   <div data-simplebar></div>
   <div class="navbar-fixed">
-    <nav class="red darken-1 nav-extended">
+    <nav class="black darken-1 nav-extended">
       <div class="nav-wrapper container">
-        <a href="https://www.lucmsilva.com/" class="brand-logo">lucmsilva</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="https://www.lucmsilva.com/#home">Home</a></li>
-          <li><a href="https://www.lucmsilva.com/#projects">My projects</a></li>
-          <li><a href="https://www.lucmsilva.com/#social">Social media</a></li>
-          <li><a href="https://www.lucmsilva.com/#donate">Donate</a></li>
-        </ul>
+        <div class="head_links">
+          <a href="https://www.lucmsilva.com/" class="brand-logo">lucmsilva</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="https://www.lucmsilva.com/#home">Home</a></li>
+            <li><a href="https://www.lucmsilva.com/#projects">My projects</a></li>
+            <li><a href="https://www.lucmsilva.com/#social">Social media</a></li>
+            <li><a href="https://www.lucmsilva.com/#donate">Donate</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </div>
@@ -44,20 +53,22 @@
     <li><a href="https://www.lucmsilva.com/#social">Social media</a></li>
     <li><a href="https://www.lucmsilva.com/#donate">Donate</a></li>
   </ul>
-  <section class="section scrollspy red darken-2" style="margin: -15px 0;">
+  <section class="section scrollspy black darken-2" style="margin: -15px 0;">
     <div class="container">
-      <h3>Last.fm Status</h3>
+      <h3 id="lastfm_title">Last.fm Status</h3>
       <div id="lastNoApi">
         <div class="card hoverable black-text" style="margin: 0 0 40px 0;">
           <div class="card-content">
             <div class="card-title">No API key found<span class="material-icons right">error</span></div>
-            <p>To see what are you or someone is listening to, please insert your Last.fm API key on the field below. No data is collected.</p>
+            <p>To see what are you or someone is listening to, please insert your Last.fm API key on the field below. No
+              data is collected.</p>
             <form>
               <input id="apiKeyInput" type="password" class="validate" autocomplete="lastFmApiKey">
               <label for="apiKeyInput">Insert your API key here</label>
             </form><br>
-            <a class="blue-text" href="https://www.last.fm/api/account/create">Click here to generate your own API key from Last.fm.</a><br>
-            <p class="blue-text" onclick="saveToStorage();">Save key and specify user</a>
+            <a class="red-text" href="https://www.last.fm/api/account/create">Click here to generate your own API key
+              from Last.fm.</a><br>
+            <p class="red-text" onclick="saveToStorage();">Save key and specify user</p>
           </div>
         </div>
       </div>
@@ -70,9 +81,9 @@
               <input id="userInput" class="validate" autocomplete="username">
               <label for="userInput">Insert the username here</label>
             </form><br>
-            <a href="https://www.last.fm/join" class="blue-text">Create a Last.fm account</a>
-            <p class="blue-text" onclick="fetchNowPlaying();">Show stats for this user</a>
-            <p class="blue-text" onclick="clearStorage();">Log out and remove API key</a>
+            <a href="https://www.last.fm/join" class="red-text">Create a Last.fm account</a>
+            <p class="red-text" onclick="fetchNowPlaying();">Show stats for this user</a>
+            <p class="red-text" onclick="clearStorage();">Log out and remove API key</a>
           </div>
         </div>
       </div>
@@ -80,13 +91,14 @@
         <div class="col s12 m4">
           <div class="card hoverable black-text">
             <div class="card-image">
-              <img src="https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg" alt="Album Art" id="albumArt">
+              <img src="https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg" alt="Album Art"
+                id="albumArt">
             </div>
             <div class="card-content">
               <div class="small-spacing">
                 <a id="albumArtDesc">Loading album art...</a><br>
-                <a class="black-text" onclick="fetchNowPlaying();">Refresh stats</a><span> |</span>
-                <a class="black-text" onclick="resetToFirstState();">Check another user</a>
+                <a class="red-text" onclick="fetchNowPlaying();">Refresh stats</a><span> |</span>
+                <a class="red-text" onclick="resetToFirstState();">Check another user</a>
               </div>
             </div>
           </div>
@@ -118,19 +130,26 @@
       </div>
     </div>
   </section>
-  <footer class="page-footer red darken-1">
+  <footer class="page-footer black darken-1">
     <div class="container">
       <div class="center">
         <div class="small-spacing">
-          <p>&copy; 2024 <a href="https://github.com/lucmsilva651" target="_blank" rel="noopener noreferrer">Lucas Gabriel (lucmsilva)</a>. Made with help of the <a href="https://materializecss.com/" target="_blank" rel="noopener noreferrer">Materialize</a> framework.</p>
-          <p><a href="https://github.com/lucmsilva651/last-fm-status/" target="_blank" rel="noopener noreferrer">Source code on GitHub</a> | <a href="https://github.com/lucmsilva651/last-fm-status/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">BSD-3-Clause</a></p>
+          <p>&copy; 2024 <a href="https://github.com/lucmsilva651" target="_blank" rel="noopener noreferrer">Lucas
+              Gabriel (lucmsilva)</a>. Made with help of the <a href="https://materializecss.com/" target="_blank"
+              rel="noopener noreferrer">Materialize</a> framework.</p>
+          <p><a href="https://github.com/lucmsilva651/last-fm-status/" target="_blank" rel="noopener noreferrer">Source
+              code on GitHub</a> | <a href="https://github.com/lucmsilva651/last-fm-status/blob/main/LICENSE"
+              target="_blank" rel="noopener noreferrer">BSD-3-Clause</a></p>
         </div>
         <br>
       </div>
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="javascript/index.js"></script>
   <script src="javascript/lastfm.js"></script>
 </body>
+
 </html>
