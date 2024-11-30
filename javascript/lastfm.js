@@ -81,7 +81,6 @@ async function fetchNowPlaying() {
 
 async function clearStorage() {
   localStorage.clear();
-  alert("You have removed your API key from this website.\nlocalStorage cleared.");
   location.reload();
 }
 
