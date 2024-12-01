@@ -32,7 +32,7 @@ a {
 }
 
 .head_links a {
-  position: relative;
+  position: sticky;
   display: inline-block;
   text-decoration: none;
   overflow: hidden;
