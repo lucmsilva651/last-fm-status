@@ -5,7 +5,11 @@
 console.log("reading from localStorage...");
 const apiKey = localStorage.getItem("apiKey");
 
-const statsFor = document.getElementById('statsFor');
+const lastUsers = document.querySelectorAll('.last-user');
+const userLink = document.getElementById('userLink');
+const userScrobbles = document.getElementById('userScrobbles');
+const listeningTo = document.getElementById('listeningTo');
+const downloadIcn = document.getElementById('downloadIcn');
 const trackNames = document.querySelectorAll('.track-name');
 const artistNames = document.querySelectorAll('.artist-name');
 const albumNames = document.querySelectorAll('.album-name');
@@ -23,9 +27,11 @@ async function fetchPlayData() {
   console.log("making last.fm api request...");
   const response = await fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user="+username+"&api_key="+apiKey+"&format=json");
   const data = await response.json();
+  console.log(data);
   const track = data.recenttracks.track[0];
   console.log("track object:", track);
-  showStats();
+
+  initialSteps(data);
 
   const isPlaying = track["@attr"] && track["@attr"].nowplaying;
 
@@ -33,9 +39,11 @@ async function fetchPlayData() {
     trackNames.forEach(trackName => {
       trackName.innerText = track.name;
     });
-    statsFor.innerText = username;
-    statsFor.href = `https://www.last.fm/user/${encodeURIComponent(username)}`;
-    statsFor.classList.add("red-text");
+    lastUsers.forEach(lastUser => {
+      lastUser.innerText = username;
+      lastUser.href = `https://www.last.fm/user/${encodeURIComponent(username)}`;
+      lastUser.classList.add("red-text");
+    });
     if (track.artist["#text"]) {
       artistNames.forEach(artistName => {
         artistName.innerText = `${track.artist["#text"]}`;
@@ -89,7 +97,6 @@ async function fetchPlayData() {
       }
       albumArt.src = track.image[3]["#text"];
       albumArtDesc.href = track.image[3]["#text"];
-      albumArtDesc.classList.add("red-text");
       albumArtDesc.download = "AlbumArt.jpg";
     } else {
       albumArtDesc.innerText = "No album art available";
@@ -121,6 +128,10 @@ async function fetchPlayData() {
       albumName.innerText = "None";
     });
     trackLink.innerText = "None";
+    albumLink.innerText = "None";
+    artistLink.innerText = "None";
+    listeningTo.innerText = "Nothing is playing";
+    downloadIcn.style.display = "none";
     trackMbid.innerText = "None";
     artistMbid.innerText = "None";
     albumMbid.innerText = "None";
@@ -152,9 +163,25 @@ async function saveToStorage() {
   location.reload();
 }
 
-function showStats() {
+function initialSteps(data) {
   document.getElementById('lastStatus').style.display = "";
   document.getElementById('lastFirstUi').style.display = "none";
+  
+  lastUsers.forEach(lastUser => {
+    lastUser.innerText = document.getElementById("userInput").value;
+    lastUser.href = `https://www.last.fm/user/${encodeURIComponent(document.getElementById("userInput").value)}`;
+    lastUser.classList.add("red-text");
+  });
+
+  userLink.innerText = `https://www.last.fm/user/${encodeURIComponent(document.getElementById("userInput").value)}`;
+  userLink.href = `https://www.last.fm/user/${encodeURIComponent(document.getElementById("userInput").value)}`;
+  userLink.classList.add("red-text");
+  
+  if (data.recenttracks["@attr"] && data.recenttracks["@attr"].total) {
+    userScrobbles.innerText = data.recenttracks["@attr"].total;
+  } else {
+    userScrobbles.innerText = "0";
+  }
 }
 
 async function resetToFirstState() {

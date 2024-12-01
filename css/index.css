@@ -49,13 +49,13 @@ a {
   width: 100%;
 }
 
-.album-name-style {
+.icon-align-prereq {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.album-name-style .material-icons {
+.small-material-icons {
   font-size: 18px;
   padding-right: 5px;
 }
