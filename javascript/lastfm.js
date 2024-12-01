@@ -21,7 +21,7 @@ const albumArt = document.getElementById('albumArt');
 async function fetchPlayData() {
   const username = document.getElementById("userInput").value;
   console.log("making last.fm api request...");
-  const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json`);
+  const response = await fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user="+username+"&api_key="+apiKey+"&format=json");
   const data = await response.json();
   const track = data.recenttracks.track[0];
   console.log("track object:", track);
