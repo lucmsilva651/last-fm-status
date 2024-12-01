@@ -49,36 +49,32 @@
   <section class="section scrollspy black" style="margin: -15px 0;">
     <div class="container">
       <h3 class="bold">Last.fm Status</h3>
-      <div id="lastNoApi">
-        <div class="row">
-          <div class="col s12 m12">
-            <div class="card black-text" style="margin: 0 0 40px 0;">
-              <div class="card-content">
-                <span class="card-title">No API key found<span class="material-icons right">error</span></span>
-                <p>To see what are you or someone is listening to, please insert your Last.fm API key on the field below. No data is collected.</p>
-                <form>
-                  <input id="apiKeyInput" type="password" class="validate" required>
-                  <label for="apiKeyInput">Insert your API key here</label>
-                </form><br>
-                <p class="red-text"><span onclick="saveToStorage();">Save key and specify user</span><a class="right" href="https://www.last.fm/api/account/create">Click here to create your own API key from Last.fm</a></p>
-              </div>
+      <div class="row" id="lastNoApi">
+        <div class="col s12 m12">
+          <div class="card black-text" style="margin: 0 0 40px 0;">
+            <div class="card-content">
+              <span class="card-title">No API key found<span class="material-icons right">error</span></span>
+              <p>To see what are you or someone is listening to, please insert your Last.fm API key on the field below. No data is collected.</p>
+              <form>
+                <input id="apiKeyInput" type="password" class="validate" required>
+                <label for="apiKeyInput">Insert your API key here</label>
+              </form><br>
+              <p class="red-text"><span onclick="saveToStorage();">Save key and specify user</span><a class="right" href="https://www.last.fm/api/account/create">Click here to create your own API key from Last.fm</a></p>
             </div>
           </div>
         </div>
       </div>
-      <div id="lastFirstUi">
-        <div class="row">
-          <div class="col s12 m12">
-            <div class="card black-text">
-              <div class="card-content">
-                <span class="card-title">Specify the user<span class="material-icons right">person</span></span>
-                <p>Now insert the user that you want to see info from:</p>
-                <form>
-                  <input id="userInput" class="validate" required>
-                  <label for="userInput">Insert the username here</label>
-                </form><br>
-                <p class="red-text"><span onclick="fetchNowPlaying();">Show stats for this user</span><span class="right" onclick="clearStorage();">Log out and remove API key</span></p>
-              </div>
+      <div class="row" id="lastFirstUi">
+        <div class="col s12 m12">
+          <div class="card black-text">
+            <div class="card-content">
+              <span class="card-title">Specify the user<span class="material-icons right">person</span></span>
+              <p>Now insert the user that you want to see info from:</p>
+              <form>
+                <input id="userInput" class="validate" required>
+                <label for="userInput">Insert the username here</label>
+              </form><br>
+              <p class="red-text"><span onclick="fetchNowPlaying();">Show stats for this user</span><span class="right" onclick="clearStorage();">Log out and remove API key</span></p>
             </div>
           </div>
         </div>
@@ -87,7 +83,7 @@
         <div class="col s12 m12">
           <div class="card black-text">
             <div class="card-content">
-              <p>Showing stats for the user "<a id="statsFor">Loading...</a>"<span class="right"><a class="red-text" onclick="resetToFirstState();">Check another user</a> | <a class="red-text" onclick="clearStorage();">Log out and remove API key</a></span></p>
+              <p>Showing stats for the user "<a id="statsFor">Loading...</a>"<span class="right"><a class="red-text" onclick="resetToFirstState();">Check another user</a> • <a class="red-text" onclick="clearStorage();">Log out and remove API key</a></span></p>
             </div>
           </div>
         </div>
@@ -136,7 +132,7 @@
       <div class="center">
         <div class="small-spacing">
           <p>&copy; 2024 <a href="https://github.com/lucmsilva651" target="_blank" rel="noopener noreferrer">Lucas Gabriel (lucmsilva)</a>. Made with help of the <a href="https://materializecss.com/" target="_blank" rel="noopener noreferrer">Materialize</a> framework.</p>
-          <p><a href="https://github.com/lucmsilva651/last-fm-status/" target="_blank" rel="noopener noreferrer">Source code on GitHub</a> | <a href="https://github.com/lucmsilva651/last-fm-status/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">BSD-3-Clause</a></p>
+          <p><a href="https://github.com/lucmsilva651/last-fm-status/" target="_blank" rel="noopener noreferrer">Source code on GitHub</a> • <a href="https://github.com/lucmsilva651/last-fm-status/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">BSD-3-Clause</a></p>
         </div>
         <br>
       </div>
