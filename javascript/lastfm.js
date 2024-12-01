@@ -6,11 +6,13 @@ console.log("reading from localStorage...");
 const apiKey = localStorage.getItem("apiKey");
 
 const statsFor = document.getElementById('statsFor');
-const artistName = document.getElementById('artistName');
-const albumName = document.getElementById('albumName');
-const trackTitle = document.getElementById('trackTitle');
+const trackNames = document.querySelectorAll('.track-name');
+const artistNames = document.querySelectorAll('.artist-name');
+const albumNames = document.querySelectorAll('.album-name');
 const trackMbid = document.getElementById('trackMbid');
 const trackLink = document.getElementById('trackLink');
+const artistLink = document.getElementById('artistLink');
+const albumLink = document.getElementById('albumLink');
 const artistMbid = document.getElementById('artistMbid');
 const albumMbid = document.getElementById('albumMbid');
 const albumArtDesc = document.getElementById('albumArtDesc');
@@ -28,11 +30,24 @@ async function fetchPlayData() {
   const isPlaying = track["@attr"] && track["@attr"].nowplaying;
 
   if (isPlaying) {
-    trackTitle.innerText = track.name;
+    trackNames.forEach(trackName => {
+      trackName.innerText = track.name;
+    });
     statsFor.innerText = username;
-    statsFor.href = `https://last.fm/user/${username}`;
+    statsFor.href = `https://www.last.fm/user/${encodeURIComponent(username)}`;
     statsFor.classList.add("red-text");
-    track.artist["#text"] ? artistName.innerText = `${track.artist["#text"]}` : artistName.innerText = "Unknown (N/A)";
+    if (track.artist["#text"]) {
+      artistNames.forEach(artistName => {
+        artistName.innerText = `${track.artist["#text"]}`;
+      });
+      artistLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"])}`;
+      artistLink.classList.add("red-text");
+      artistLink.href = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"])}`;
+    } else {
+      artistNames.forEach(artistName => {
+        artistName.innerText = "Unknown (N/A)";
+      });
+    }
     if (track.mbid) {
       trackMbid.innerText = `${track.mbid}`;
       trackMbid.href = `https://musicbrainz.org/recording/${track.mbid}`;
@@ -47,7 +62,25 @@ async function fetchPlayData() {
     } else {
       trackLink.innerText = "Unknown (N/A)";
     }
-    track.album["#text"] ? albumName.innerText = `${track.album["#text"]}` : albumName.innerText = "Unknown (N/A)";
+    if (track.url) {
+      trackLink.innerText = `${track.url}`;
+      trackLink.href = `${track.url}`;
+      trackLink.classList.add("red-text");
+    } else {
+      trackLink.innerText = "Unknown (N/A)";
+    }
+    if (track.album["#text"]) {
+      albumNames.forEach(albumName => {
+        albumName.innerText = `${track.album["#text"]}`;
+      });
+      albumLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"])}/${encodeURIComponent(track.album["#text"])}`;
+      albumLink.classList.add("red-text");
+      albumLink.href = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"])}/${encodeURIComponent(track.album["#text"])}`;
+    } else {
+      albumNames.forEach(albumName => {
+        albumName.innerText = "Unknown (N/A)";
+      });
+    }
     if (track.image[3]["#text"]) {
       const img = new Image();
       img.src = track.image[3]["#text"];
@@ -78,9 +111,15 @@ async function fetchPlayData() {
       artistMbid.innerText = "Unknown (N/A)";
     }
   } else {
-    trackTitle.innerText = "None";
-    artistName.innerText = "None";
-    albumName.innerText = "None";
+    trackNames.forEach(trackName => {
+      trackName.innerText = "None";
+    });
+    artistNames.forEach(artistName => {
+      artistName.innerText = "None";
+    });
+    albumNames.forEach(albumName => {
+      albumName.innerText = "None";
+    });
     trackLink.innerText = "None";
     trackMbid.innerText = "None";
     artistMbid.innerText = "None";

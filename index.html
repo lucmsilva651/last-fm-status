@@ -46,7 +46,7 @@
     <li><a href="https://www.lucmsilva.com/#social">Social media</a></li>
     <li><a href="https://www.lucmsilva.com/#donate">Donate</a></li>
   </ul>
-  <section class="section scrollspy black" style="margin: -15px 0;">
+  <section class="section black" style="margin: -15px 0;">
     <div class="container">
       <h3 class="bold">Last.fm Status</h3>
       <div class="row" id="lastNoApi">
@@ -69,7 +69,7 @@
           <div class="card black-text">
             <div class="card-content">
               <span class="card-title">Specify the user<span class="material-icons right">person</span></span>
-              <p>Now insert the user that you want to see info from:</p>
+              <p>Insert the user that you want to see info from:</p>
               <form>
                 <input id="userInput" class="validate" required>
                 <label for="userInput">Insert the username here</label>
@@ -83,7 +83,10 @@
         <div class="col s12 m12">
           <div class="card black-text">
             <div class="card-content">
-              <p>Showing stats for the user "<a id="statsFor">Loading...</a>"<span class="right"><a class="red-text" onclick="resetToFirstState();">Check another user</a> • <a class="red-text" onclick="clearStorage();">Log out and remove API key</a></span></p>
+              <p class="truncate"><a id="statsFor">Loading...</a> is listening to...</p>
+              <span class="card-title truncate"><span class="artist-name">Loading...</span> - <span class="track-name">Loading...</span></span>
+              <p class="album-name-style truncate"><span class="material-icons">album</span><span class="album-name">Loading...</span></p>
+              <p class="red-text"><span onclick="resetToFirstState();">Check another user</span><span class="right" onclick="clearStorage();">Log out and remove API key</span></p>
             </div>
           </div>
         </div>
@@ -101,28 +104,32 @@
           </div>
         </div>
         <div class="col s12 m8">
-          <div class="card black-text">
-            <div class="card-content">
-              <span class="card-title">Song information<span class="material-icons right">music_note</span></span>
-              <p>Song name: <span id="trackTitle">Loading...</span></p>
-              <p class="truncate">Last.fm URL: <a id="trackLink">Loading...</a></p>
-              <p>MusicBrainz MBID: <a id="trackMbid">Loading...</a></p>
-            </div>
-          </div>
-          <div class="card black-text">
-            <div class="card-content">
-              <span class="card-title">Artist information<span class="material-icons right">person</span></span>
-              <p>Artist name: <span id="artistName">Loading...</span></p>
-              <p>MusicBrainz MBID: <a id="artistMbid">Loading...</a></p>
-            </div>
-          </div>
-          <div class="card black-text">
-            <div class="card-content">
-              <span class="card-title">Album information<span class="material-icons right">album</span></span>
-              <p>Album name: <span id="albumName">Loading...</span></p>
-              <p>MusicBrainz MBID: <a id="albumMbid">Loading...</a></p>
-            </div>
-          </div>
+          <ul class="collection black-text">
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">music_note</i>
+              <span class="title"><b>Song information</b></span>
+              <p class="truncate">Track name: <span class="track-name">Loading...</span><br>
+                Last.fm URL: <a id="trackLink">Loading...</a><br>
+                MusicBrainz MBID: <a id="trackMbid">Loading...</a>
+              </p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">person</i>
+              <span class="title"><b>Artist information</b></span>
+              <p class="truncate">Artist name: <span class="artist-name">Loading...</span><br>
+                Last.fm URL: <a id="artistLink">Loading...</a><br>
+                MusicBrainz MBID: <a id="artistMbid">Loading...</a>
+              </p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">album</i>
+              <span class="title"><b>Album information</b></span>
+              <p class="truncate">Album name: <span class="album-name">Loading...</span><br>
+                Last.fm URL: <a id="albumLink">Loading...</a><br>
+                MusicBrainz MBID: <a id="albumMbid">Loading...</a>
+              </p>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
