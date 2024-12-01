@@ -11,6 +11,10 @@ a {
 
 .red-text {
   cursor: pointer;
+  color: #D1170E;
+}
+
+.red-text :hover {
   color: #940000;
 }
 
