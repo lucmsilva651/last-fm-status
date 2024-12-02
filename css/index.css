@@ -11,6 +11,10 @@ a {
 
 .red-text {
   cursor: pointer;
+  color: #D1170E;
+}
+
+.red-text :hover {
   color: #940000;
 }
 
@@ -28,7 +32,7 @@ a {
 }
 
 .head_links a {
-  position: relative;
+  position: sticky;
   display: inline-block;
   text-decoration: none;
   overflow: hidden;
