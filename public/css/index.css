@@ -68,3 +68,39 @@ a {
 #loadingIndicator {
   display: none;
 }
+
+.brand-logo {
+  font-size: 1.5rem;
+}
+
+.sidenav {
+  width: 250px;
+  padding-top: 15px;
+}
+
+i {
+  margin: 0;
+  padding-right: 5px;
+}
+
+.icon-m {
+  padding-right: 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item i {
+  margin-right: 8px;
+}
+
+.h3-icon {
+  margin-right: 4px;
+}
