@@ -40,6 +40,13 @@ async function fetchPlayData() {
     console.log(data);
 
     loadingIndicator.style.display = 'none';
+    const recentTracks = data.recenttracks.track;
+    if (!recentTracks || recentTracks.length === 0) {
+      console.error('No recent tracks found.');
+      return;
+    }
+    const track = recentTracks[0];
+    console.log(track);
 
     if (data.error) {
       throw new Error(data.message);
@@ -51,16 +58,19 @@ async function fetchPlayData() {
 
     if (isPlaying) {
       trackNames.forEach(trackName => {
+        console.log(`Updating track name: ${track.name}`);
         trackName.innerText = track.name;
       });
       lastUsers.forEach(lastUser => {
+        console.log(`Updating last user: ${username}`);
         lastUser.innerText = username;
         lastUser.href = `https://www.last.fm/user/${encodeURIComponent(username)}`;
         lastUser.classList.add("red-text");
       });
       if (track.artist["#text"]) {
         artistNames.forEach(artistName => {
-          artistName.innerText = `${track.artist["#text"]}`;
+          console.log(`Updating artist name: ${track.artist["#text"]}`);
+          artistName.innerText = track.artist["#text"];
         });
         artistLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"])}`;
         artistLink.classList.add("red-text");
@@ -93,7 +103,8 @@ async function fetchPlayData() {
       }
       if (track.album["#text"]) {
         albumNames.forEach(albumName => {
-          albumName.innerText = `${track.album["#text"]}`;
+          console.log(`Updating album name: ${track.album["#text"]}`);
+          albumName.innerText = track.album["#text"];
         });
         albumLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"])}/${encodeURIComponent(track.album["#text"])}`;
         albumLink.classList.add("red-text");
