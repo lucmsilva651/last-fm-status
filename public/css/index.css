@@ -63,3 +63,11 @@ a {
   font-size: 18px;
   padding-right: 5px;
 }
+
+#lastNoApi,
+#lastStatus,
+#lastFirstUi,
+#userPicker,
+#loadingIndicator {
+  display: none;
+}

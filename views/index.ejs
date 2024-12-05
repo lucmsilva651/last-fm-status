@@ -49,6 +49,11 @@
   <section class="section black" style="margin: -15px 0;">
     <div class="container">
       <h3 class="bold">Last.fm Status</h3>
+      <div id="userPicker" style="display: none; margin: 20px;">
+        <label for="userInput" class="white-text">Enter Last.fm Username:</label>
+        <input id="userInput" type="text" class="white-text" value="">
+        <button class="btn red" onclick="fetchNowPlaying();">Fetch Now Playing</button>
+      </div>
       <div class="row" id="lastNoApi">
         <div class="col s12 m12">
           <div class="card black-text" style="margin: 0 0 40px 0;">
@@ -63,6 +68,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div id="loadingIndicator" style="text-align: center; margin-top: 20px;">
+        <p>Loading...</p>
       </div>
       <div class="row" id="lastFirstUi">
         <div class="col s12 m12">
