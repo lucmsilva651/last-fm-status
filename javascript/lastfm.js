@@ -251,7 +251,7 @@ async function saveToStorage() {
 }
 
 async function refreshAct() {
-  resetToFirstState().then(() => fetchNowPlaying());
+  resetToFirstState().then(async () => await fetchNowPlaying());
   console.log("refreshing data for user...");
 }
 
