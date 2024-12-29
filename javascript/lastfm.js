@@ -250,7 +250,7 @@ async function saveToStorage() {
   }
 }
 
-function initialSteps(data) {
+async function initialSteps(data) {
   lastStatus.style.display = "block";
 
   lastUsers.forEach(lastUser => {
@@ -270,7 +270,7 @@ function initialSteps(data) {
   }
 }
 
-function resetToFirstState() {
+async function resetToFirstState() {
   console.log("Checking if the API key is inserted");
 
   lastNoApi.style.display = "none";
