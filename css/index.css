@@ -33,11 +33,11 @@ h3 {
 }
 
 .left-side.col {
-  padding: 0 10px 0 0;
+  padding: 0;
 }
 
 .right-side.col {
-  padding: 0 0 0 10px;
+  padding: 0;
 }
 
 .right-side .collection {
@@ -144,4 +144,14 @@ i {
 
 .h3-icon {
   margin-right: 4px;
+}
+
+@media (min-width: 600px) {
+  .left-side.col {
+    padding: 0 10px 0 0;
+  }
+  
+  .right-side.col {
+    padding: 0 0 0 10px;
+  }
 }
