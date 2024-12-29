@@ -133,9 +133,9 @@ async function fetchPlayData() {
       if (track.image && track.image[3] && track.image[3]["#text"]) {
         let imageUrl = track.image[3]["#text"];
 
-        if (track.mbid) {
+        if (track.album.mbid) {
           try {
-            const response = await fetch(`https://coverartarchive.org/release/${track.mbid}`);
+            const response = await fetch(`https://coverartarchive.org/release/${track.album.mbid}`);
             if (response.ok) {
               const coverArtData = await response.json();
               const highResImage = coverArtData.images[0]?.thumbnails?.['1200'] || coverArtData.images[0]?.image;
