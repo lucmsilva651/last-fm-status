@@ -108,8 +108,7 @@ h3 {
   padding-right: 5px;
 }
 
-#lastFirstUi,
-#loadingIndicator {
+#lastFirstUi {
   display: none;
 }
 
