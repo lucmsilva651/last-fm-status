@@ -132,6 +132,7 @@ async function fetchPlayData() {
 
       if (track.image && track.image[3] && track.image[3]["#text"]) {
         let imageUrl = track.image[3]["#text"];
+        let imgSource = "Last.fm";
 
         if (track.album.mbid) {
           try {
@@ -141,6 +142,7 @@ async function fetchPlayData() {
               const highResImage = coverArtData.images[0]?.thumbnails?.['1200'] || coverArtData.images[0]?.image;
               if (highResImage) {
                 imageUrl = highResImage;
+                imgSource = "MusicBrainz";
               }
             }
           } catch (e) {
@@ -151,7 +153,7 @@ async function fetchPlayData() {
         const img = new Image();
         img.src = imageUrl;
         img.onload = function () {
-          albumArtDesc.innerText = `Download album art (${this.width}x${this.height})`;
+          albumArtDesc.innerText = `Album art (${this.width}x${this.height}, ${imgSource})`;
         };
 
         albumArt.src = imageUrl;
