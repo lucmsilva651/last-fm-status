@@ -28,13 +28,49 @@ const albumMbid = document.getElementById('albumMbid');
 const albumArtDesc = document.getElementById('albumArtDesc');
 const albumArt = document.getElementById('albumArt');
 
+async function somethingWentWrong(errorString) {
+  lastFirstUi.style.display = "none";
+  lastNoApi.style.display = "none";
+  lastStatus.style.display = "none";
+  console.error(errorString);
+  alert(errorString);
+  resetToFirstState();
+};
+
+function handleErrors(error){
+  somethingWentWrong(`Something went wrong when fetching data from Last.fm. Please try again later or report this error to the developers.\n\n${error.message}`);
+  console.error('Error fetching data:', error);
+}
+
+async function resetToFirstState() {
+  console.log("Checking if the API key is inserted");
+
+  lastNoApi.style.display = "none";
+  lastStatus.style.display = "none";
+  lastFirstUi.style.display = "none";
+  albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
+  albumArtDesc.innerText = "Loading album art...";
+  albumArtDesc.removeAttribute("href");
+
+  if (apiKey) {
+    console.log("API key found");
+    lastFirstUi.style.display = "block";
+
+    if (lastViewedUser) {
+      userInput.value = lastViewedUser;
+    }
+  } else {
+    lastNoApi.style.display = "block";
+  }
+}
+
 async function fetchPlayData() {
   let username = userInput.value || lastViewedUser;
 
   if (!username) {
     somethingWentWrong("No username provided");
     console.error("No username provided");
-    return;
+    resetToFirstState();
   }
 
   localStorage.setItem("lastViewedUser", username);
@@ -47,6 +83,10 @@ async function fetchPlayData() {
       const data = await response.json();
       console.log(data);
 
+      if (data.error) {
+        throw new Error(data.message);
+      }
+
       const recentTracks = data.recenttracks.track;
 
       if (!recentTracks || recentTracks.length === 0) {
@@ -56,10 +96,6 @@ async function fetchPlayData() {
 
       const track = recentTracks[0];
       console.log(track);
-
-      if (data.error) {
-        throw new Error(data.message);
-      }
 
       initialSteps(data);
 
@@ -213,8 +249,7 @@ async function fetchPlayData() {
         albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
       }
   } catch (error) {
-    somethingWentWrong("Something went wrong when fetching data from Last.fm. Please try again later.");
-    console.error('Error fetching data:', error);
+    handleErrors(error);
   }
 }
 
@@ -223,8 +258,7 @@ async function fetchNowPlaying() {
     lastFirstUi.style.display = "none";
     await fetchPlayData();
   } catch (error) {
-    somethingWentWrong("Something went wrong when fetching data from Last.fm. Please try again later.");
-    console.error('Error when searching data from last.fm:', error);
+    handleErrors(error);
   }
 }
 
@@ -234,8 +268,7 @@ async function clearStorage() {
     localStorage.clear();
     location.reload();
   } catch (error) {
-    somethingWentWrong("Something went wrong when logging out. Please try again later.");
-    console.error("Error clearing storage:", error);
+    handleErrors(error);
   }
 }
 
@@ -243,17 +276,15 @@ async function saveToStorage() {
   try {
     const apiKey = apiKeyInput.value;
     if (!apiKey) {
-      await somethingWentWrong("API key is required");
-      throw new Error("API key is required");
+      somethingWentWrong('API key is required!');
     }
 
     localStorage.setItem("apiKey", apiKey);
     sessionStorage.removeItem("apiKey");
 
     location.reload();
-  } catch (error) {
-    somethingWentWrong("Something went wrong when saving the API key. Please try again later.");
-    console.error("Error saving API key:", error);
+  } catch (error){
+    handleErrors(error);
   }
 }
 
@@ -280,37 +311,6 @@ async function initialSteps(data) {
   } else {
     userScrobbles.innerText = "0";
   }
-}
-
-async function resetToFirstState() {
-  console.log("Checking if the API key is inserted");
-
-  lastNoApi.style.display = "none";
-  lastStatus.style.display = "none";
-  lastFirstUi.style.display = "none";
-  albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
-  albumArtDesc.innerText = "Loading album art...";
-  albumArtDesc.removeAttribute("href");
-
-  if (apiKey) {
-    console.log("API key found");
-    lastFirstUi.style.display = "block";
-
-    if (lastViewedUser) {
-      userInput.value = lastViewedUser;
-    }
-  } else {
-    lastNoApi.style.display = "block";
-  }
-}
-
-async function somethingWentWrong(errorString) {
-  lastFirstUi.style.display = "none";
-  lastNoApi.style.display = "none";
-  lastStatus.style.display = "none";
-  console.error(errorString);
-  alert(errorString);
-  resetToFirstState();
 }
 
 resetToFirstState();
