@@ -37,3 +37,7 @@ html,
 .primer-white-icons {
   filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(218deg) brightness(104%) contrast(100%) !important;
 }
+
+.primer-black-icons {
+  filter: invert(0%) sepia(0%) saturate(7493%) hue-rotate(135deg) brightness(105%) contrast(96%) !important;
+}
