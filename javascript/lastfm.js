@@ -44,7 +44,6 @@ async function fetchPlayData() {
   try {
     const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(username).replace("%20", "+")}&api_key=${encodeURIComponent(apiKey).replace("%20", "+")}&format=json`);
 
-    if (response.ok) {
       const data = await response.json();
       console.log(data);
 
@@ -213,7 +212,6 @@ async function fetchPlayData() {
         artistMbid.removeAttribute("href");
         albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
       }
-    }
   } catch (error) {
     somethingWentWrong("Something went wrong when fetching data from Last.fm. Please try again later.");
     console.error('Error fetching data:', error);
