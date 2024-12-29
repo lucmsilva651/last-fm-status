@@ -32,6 +32,7 @@ async function fetchPlayData() {
   let username = userInput.value || lastViewedUser;
 
   if (!username) {
+    somethingWentWrong("No username provided");
     console.error("No username provided");
     return;
   }
@@ -42,175 +43,179 @@ async function fetchPlayData() {
 
   try {
     const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(username).replace("%20", "+")}&api_key=${encodeURIComponent(apiKey).replace("%20", "+")}&format=json`);
-    const data = await response.json();
-    console.log(data);
 
-    const recentTracks = data.recenttracks.track;
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
 
-    if (!recentTracks || recentTracks.length === 0) {
-      console.error('No recent tracks found.');
-      return;
-    }
+      const recentTracks = data.recenttracks.track;
 
-    const track = recentTracks[0];
-    console.log(track);
+      if (!recentTracks || recentTracks.length === 0) {
+        console.error('No recent tracks found.');
+        return;
+      }
 
-    if (data.error) {
-      throw new Error(data.message);
-    }
+      const track = recentTracks[0];
+      console.log(track);
 
-    initialSteps(data);
+      if (data.error) {
+        throw new Error(data.message);
+      }
 
-    const isPlaying = track["@attr"] && track["@attr"].nowplaying;
+      initialSteps(data);
 
-    if (isPlaying) {
-      trackNames.forEach(trackName => {
-        console.log(`Updating track name: ${track.name}`);
-        trackName.innerText = track.name;
-      });
+      const isPlaying = track["@attr"] && track["@attr"].nowplaying;
 
-      lastUsers.forEach(lastUser => {
-        console.log(`Updating last user: ${username}`);
-        lastUser.innerText = username;
-        lastUser.href = `https://www.last.fm/user/${encodeURIComponent(username).replace("%20", "+")}`;
-        lastUser.classList.add("red-text");
-      });
-
-      if (track.artist["#text"]) {
-        artistNames.forEach(artistName => {
-          console.log(`Updating artist name: ${track.artist["#text"]}`);
-          artistName.innerText = track.artist["#text"];
+      if (isPlaying) {
+        trackNames.forEach(trackName => {
+          console.log(`Updating track name: ${track.name}`);
+          trackName.innerText = track.name;
         });
 
-        artistLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}`;
-        artistLink.classList.add("red-text");
-        artistLink.href = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}`;
-      } else {
-        artistNames.forEach(artistName => {
-          artistName.innerText = "Unknown (N/A)";
-        });
-      }
-
-      if (track.mbid) {
-        trackMbid.innerText = `${track.mbid}`;
-        trackMbid.href = `https://musicbrainz.org/recording/${track.mbid}`;
-        trackMbid.classList.add("red-text");
-      } else {
-        trackMbid.innerText = "Unknown (N/A)";
-      }
-
-      if (track.url) {
-        trackLink.innerText = `${track.url}`;
-        trackLink.href = `${track.url}`;
-        trackLink.classList.add("red-text");
-      } else {
-        trackLink.innerText = "Unknown (N/A)";
-      }
-
-      if (track.url) {
-        trackLink.innerText = `${track.url}`;
-        trackLink.href = `${track.url}`;
-        trackLink.classList.add("red-text");
-      } else {
-        trackLink.innerText = "Unknown (N/A)";
-      }
-
-      if (track.album["#text"]) {
-        albumNames.forEach(albumName => {
-          console.log(`Updating album name: ${track.album["#text"]}`);
-          albumName.innerText = track.album["#text"];
+        lastUsers.forEach(lastUser => {
+          console.log(`Updating last user: ${username}`);
+          lastUser.innerText = username;
+          lastUser.href = `https://www.last.fm/user/${encodeURIComponent(username).replace("%20", "+")}`;
+          lastUser.classList.add("red-text");
         });
 
-        albumLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}/${encodeURIComponent(track.album["#text"]).replace("%20", "+")}`;
-        albumLink.classList.add("red-text");
-        albumLink.href = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}/${encodeURIComponent(track.album["#text"]).replace("%20", "+")}`;
-      } else {
-        albumNames.forEach(albumName => {
-          albumName.innerText = "Unknown (N/A)";
-        });
-      }
+        if (track.artist["#text"]) {
+          artistNames.forEach(artistName => {
+            console.log(`Updating artist name: ${track.artist["#text"]}`);
+            artistName.innerText = track.artist["#text"];
+          });
 
-      if (track.image && track.image[3] && track.image[3]["#text"]) {
-        let imageUrl = track.image[3]["#text"];
-        let imgSource = "Last.fm";
-
-        if (track.album.mbid) {
-          try {
-            const response = await fetch(`https://coverartarchive.org/release/${track.album.mbid}`);
-            if (response.ok) {
-              const coverArtData = await response.json();
-              const highResImage = coverArtData.images[0]?.thumbnails?.['1200'] || coverArtData.images[0]?.image;
-              if (highResImage) {
-                imageUrl = highResImage;
-                imgSource = "MusicBrainz";
-              }
-            }
-          } catch (e) {
-            console.warn("error fetching album art from mb, using fallback:", e);
-          }
+          artistLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}`;
+          artistLink.classList.add("red-text");
+          artistLink.href = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}`;
+        } else {
+          artistNames.forEach(artistName => {
+            artistName.innerText = "Unknown (N/A)";
+          });
         }
 
-        const img = new Image();
-        img.src = imageUrl;
-        img.onload = function () {
-          albumArtDesc.innerText = `Album art (${this.width}x${this.height}, ${imgSource})`;
-        };
+        if (track.mbid) {
+          trackMbid.innerText = `${track.mbid}`;
+          trackMbid.href = `https://musicbrainz.org/recording/${track.mbid}`;
+          trackMbid.classList.add("red-text");
+        } else {
+          trackMbid.innerText = "Unknown (N/A)";
+        }
 
-        albumArt.src = imageUrl;
-        albumArtDesc.href = imageUrl;
-        albumArtDesc.download = "AlbumArt.jpg";
+        if (track.url) {
+          trackLink.innerText = `${track.url}`;
+          trackLink.href = `${track.url}`;
+          trackLink.classList.add("red-text");
+        } else {
+          trackLink.innerText = "Unknown (N/A)";
+        }
+
+        if (track.url) {
+          trackLink.innerText = `${track.url}`;
+          trackLink.href = `${track.url}`;
+          trackLink.classList.add("red-text");
+        } else {
+          trackLink.innerText = "Unknown (N/A)";
+        }
+
+        if (track.album["#text"]) {
+          albumNames.forEach(albumName => {
+            console.log(`Updating album name: ${track.album["#text"]}`);
+            albumName.innerText = track.album["#text"];
+          });
+
+          albumLink.innerText = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}/${encodeURIComponent(track.album["#text"]).replace("%20", "+")}`;
+          albumLink.classList.add("red-text");
+          albumLink.href = `https://www.last.fm/music/${encodeURIComponent(track.artist["#text"]).replace("%20", "+")}/${encodeURIComponent(track.album["#text"]).replace("%20", "+")}`;
+        } else {
+          albumNames.forEach(albumName => {
+            albumName.innerText = "Unknown (N/A)";
+          });
+        }
+
+        if (track.image && track.image[3] && track.image[3]["#text"]) {
+          let imageUrl = track.image[3]["#text"];
+          let imgSource = "Last.fm";
+
+          if (track.album.mbid) {
+            try {
+              const response = await fetch(`https://coverartarchive.org/release/${track.album.mbid}`);
+              if (response.ok) {
+                const coverArtData = await response.json();
+                const highResImage = coverArtData.images[0]?.thumbnails?.['1200'] || coverArtData.images[0]?.image;
+                if (highResImage) {
+                  imageUrl = highResImage;
+                  imgSource = "MusicBrainz";
+                }
+              }
+            } catch (e) {
+              console.warn("error fetching album art from mb, using fallback:", e);
+            }
+          }
+
+          const img = new Image();
+          img.src = imageUrl;
+          img.onload = function () {
+            albumArtDesc.innerText = `Album art (${this.width}x${this.height}, ${imgSource})`;
+          };
+
+          albumArt.src = imageUrl;
+          albumArtDesc.href = imageUrl;
+          albumArtDesc.download = "AlbumArt.jpg";
+        } else {
+          albumArtDesc.innerText = "No album art available";
+          albumArtDesc.removeAttribute("href");
+          albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
+        }
+
+
+        if (track.album.mbid) {
+          albumMbid.innerText = `${track.album.mbid}`;
+          albumMbid.href = `https://musicbrainz.org/release/${track.album.mbid}`;
+          albumMbid.classList.add("red-text");
+        } else {
+          albumMbid.innerText = "Unknown (N/A)";
+        }
+
+        if (track.artist.mbid) {
+          artistMbid.innerText = `${track.artist.mbid}`;
+          artistMbid.href = `https://musicbrainz.org/artist/${track.artist.mbid}`;
+          artistMbid.classList.add("red-text");
+        } else {
+          artistMbid.innerText = "Unknown (N/A)";
+        }
       } else {
-        albumArtDesc.innerText = "No album art available";
+        trackNames.forEach(trackName => {
+          trackName.innerText = "None";
+        });
+
+        artistNames.forEach(artistName => {
+          artistName.innerText = "None";
+        });
+
+        albumNames.forEach(albumName => {
+          albumName.innerText = "None";
+        });
+
+        trackLink.innerText = "None";
+        albumLink.innerText = "None";
+        artistLink.innerText = "None";
+        listeningTo.innerText = "Nothing is playing";
+        downloadIcn.style.display = "none";
+        trackMbid.innerText = "None";
+        artistMbid.innerText = "None";
+        albumMbid.innerText = "None";
+        albumArtDesc.innerText = "Nothing is playing";
         albumArtDesc.removeAttribute("href");
+        trackLink.removeAttribute("href");
+        trackMbid.removeAttribute("href");
+        albumMbid.removeAttribute("href");
+        artistMbid.removeAttribute("href");
         albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
       }
-
-
-      if (track.album.mbid) {
-        albumMbid.innerText = `${track.album.mbid}`;
-        albumMbid.href = `https://musicbrainz.org/release/${track.album.mbid}`;
-        albumMbid.classList.add("red-text");
-      } else {
-        albumMbid.innerText = "Unknown (N/A)";
-      }
-
-      if (track.artist.mbid) {
-        artistMbid.innerText = `${track.artist.mbid}`;
-        artistMbid.href = `https://musicbrainz.org/artist/${track.artist.mbid}`;
-        artistMbid.classList.add("red-text");
-      } else {
-        artistMbid.innerText = "Unknown (N/A)";
-      }
-    } else {
-      trackNames.forEach(trackName => {
-        trackName.innerText = "None";
-      });
-
-      artistNames.forEach(artistName => {
-        artistName.innerText = "None";
-      });
-
-      albumNames.forEach(albumName => {
-        albumName.innerText = "None";
-      });
-
-      trackLink.innerText = "None";
-      albumLink.innerText = "None";
-      artistLink.innerText = "None";
-      listeningTo.innerText = "Nothing is playing";
-      downloadIcn.style.display = "none";
-      trackMbid.innerText = "None";
-      artistMbid.innerText = "None";
-      albumMbid.innerText = "None";
-      albumArtDesc.innerText = "Nothing is playing";
-      albumArtDesc.removeAttribute("href");
-      trackLink.removeAttribute("href");
-      trackMbid.removeAttribute("href");
-      albumMbid.removeAttribute("href");
-      artistMbid.removeAttribute("href");
-      albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
     }
   } catch (error) {
+    somethingWentWrong("Something went wrong when fetching data from Last.fm. Please try again later.");
     console.error('Error fetching data:', error);
   }
 }
@@ -220,6 +225,7 @@ async function fetchNowPlaying() {
     lastFirstUi.style.display = "none";
     await fetchPlayData();
   } catch (error) {
+    somethingWentWrong("Something went wrong when fetching data from Last.fm. Please try again later.");
     console.error('Error when searching data from last.fm:', error);
   }
 }
@@ -230,6 +236,7 @@ async function clearStorage() {
     localStorage.clear();
     location.reload();
   } catch (error) {
+    somethingWentWrong("Something went wrong when logging out. Please try again later.");
     console.error("Error clearing storage:", error);
   }
 }
@@ -238,6 +245,7 @@ async function saveToStorage() {
   try {
     const apiKey = apiKeyInput.value;
     if (!apiKey) {
+      await somethingWentWrong("API key is required");
       throw new Error("API key is required");
     }
 
@@ -246,6 +254,7 @@ async function saveToStorage() {
 
     location.reload();
   } catch (error) {
+    somethingWentWrong("Something went wrong when saving the API key. Please try again later.");
     console.error("Error saving API key:", error);
   }
 }
@@ -294,6 +303,15 @@ async function resetToFirstState() {
   } else {
     lastNoApi.style.display = "block";
   }
+}
+
+async function somethingWentWrong(errorString) {
+  lastFirstUi.style.display = "none";
+  lastNoApi.style.display = "none";
+  lastStatus.style.display = "none";
+  console.error(errorString);
+  alert(errorString);
+  resetToFirstState();
 }
 
 resetToFirstState();
