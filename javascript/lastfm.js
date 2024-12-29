@@ -292,6 +292,7 @@ async function resetToFirstState() {
   lastFirstUi.style.display = "none";
   albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
   albumArtDesc.innerText = "Loading album art...";
+  albumArtDesc.removeAttribute("href");
 
   if (apiKey) {
     console.log("API key found");
