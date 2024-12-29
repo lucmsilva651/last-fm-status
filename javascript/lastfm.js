@@ -3,7 +3,7 @@
 // 2024 Lucas Gabriel (lucmsilva) - BSD-3-Clause
 
 console.log("reading from localStorage...");
-const apiKey = sessionStorage.getItem("apiKey") || localStorage.getItem("apiKey");
+const apiKey = localStorage.getItem("apiKey") || sessionStorage.getItem("apiKey");
 
 const lastViewedUser = localStorage.getItem("lastViewedUser") || "";
 const lastUsers = document.querySelectorAll('.last-user');
@@ -239,8 +239,8 @@ async function saveToStorage() {
       throw new Error("API key is required");
     }
 
-    sessionStorage.setItem("apiKey", apiKey);
-    localStorage.removeItem("apiKey");
+    localStorage.setItem("apiKey", apiKey);
+    sessionStorage.removeItem("apiKey");
 
     location.reload();
   } catch (error) {
@@ -270,13 +270,12 @@ function initialSteps(data) {
 
 function resetToFirstState() {
   console.log("Checking if the API key is inserted");
-  const hasKey = sessionStorage.getItem("apiKey") || localStorage.getItem("apiKey");
 
   lastNoApi.style.display = "none";
   lastStatus.style.display = "none";
   lastFirstUi.style.display = "none";
 
-  if (hasKey) {
+  if (apiKey) {
     console.log("API key found");
     lastFirstUi.style.display = "block";
 
