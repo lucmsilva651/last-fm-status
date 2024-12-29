@@ -162,7 +162,7 @@ async function fetchPlayData() {
       } else {
         albumArtDesc.innerText = "No album art available";
         albumArtDesc.removeAttribute("href");
-        albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg"; // Placeholder padrão.
+        albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
       }
 
 
@@ -250,6 +250,11 @@ async function saveToStorage() {
   }
 }
 
+async function refreshAct() {
+  resetToFirstState().then(() => fetchNowPlaying());
+  console.log("refreshing data for user...");
+}
+
 async function initialSteps(data) {
   lastStatus.style.display = "block";
 
@@ -276,6 +281,8 @@ async function resetToFirstState() {
   lastNoApi.style.display = "none";
   lastStatus.style.display = "none";
   lastFirstUi.style.display = "none";
+  albumArt.src = "https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg";
+  albumArtDesc.innerText = "Loading album art...";
 
   if (apiKey) {
     console.log("API key found");
