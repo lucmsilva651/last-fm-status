@@ -3,10 +3,46 @@ button,
 input,
 form {
   font-family: "Barlow", sans-serif;
+  color: #f0f6fc;
+}
+
+section {
+  background-color: #0d1117;
+  margin: -10px 0;
 }
 
 a {
   color: inherit;
+}
+
+h3 {
+  padding: 0 0 16px;
+}
+
+.card,
+.collection-item {
+  background-color: #151b23 !important;
+}
+
+.collection-item {
+  border-bottom: solid 1px #3d444d !important;
+}
+
+.card {
+  margin: 0 0 25px !important;
+}
+
+.left-side.col {
+  padding: 0 10px 0 0;
+}
+
+.right-side.col {
+  padding: 0 0 0 10px;
+}
+
+.right-side .collection {
+  border: none;
+  margin: 0 !important;
 }
 
 .red-text {
@@ -59,7 +95,8 @@ a {
   align-items: center;
 }
 
-.small-material-icons {
+.small-icons {
+  size: 18px;
   font-size: 18px;
   padding-right: 5px;
 }
