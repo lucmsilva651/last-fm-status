@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Last.fm Status | lucmsilva's Website" />
+  <link rel="shortcut icon" href="https://www.last.fm/static/images/favicon.702b239b6194.ico" type="image/x-icon">
+  <meta name="description" content="A website to check the status of a Last.fm account." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lastfm.lucmsilva.com/" />
+  <meta property="og:title" content="Last.fm Status | lucmsilva's Website" />
+  <meta property="og:description" content="A website to check the status of a Last.fm account." />
+  <meta property="twitter:url" content="https://lastfm.lucmsilva.com/" />
+  <meta property="twitter:title" content="Last.fm Status | lucmsilva's Website" />
+  <meta property="twitter:description" content="A website to check the status of a Last.fm account." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/header.css">
+  <title>Last.fm Status | lucmsilva's Website</title>
+</head>
+<body>
+  <div class="navbar-fixed">
+    <nav class="header">
+      <div class="nav-wrapper container">
+        <a href="https://www.lucmsilva.com/" class="brand-logo">lucmsilva</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-icons">
+            <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+          </svg>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li class="nav-item">
+            <a href="https://www.lucmsilva.com/#home">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-icons">
+                <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.lucmsilva.com/#projects">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-icons">
+                <path d="M5.433 2.304A4.492 4.492 0 0 0 3.5 6c0 1.598.832 3.002 2.09 3.802.518.328.929.923.902 1.64v.008l-.164 3.337a.75.75 0 1 1-1.498-.073l.163-3.33c.002-.085-.05-.216-.207-.316A5.996 5.996 0 0 1 2 6a5.993 5.993 0 0 1 2.567-4.92 1.482 1.482 0 0 1 1.673-.04c.462.296.76.827.76 1.423v2.82c0 .082.041.16.11.206l.75.51a.25.25 0 0 0 .28 0l.75-.51A.249.249 0 0 0 9 5.282V2.463c0-.596.298-1.127.76-1.423a1.482 1.482 0 0 1 1.673.04A5.993 5.993 0 0 1 14 6a5.996 5.996 0 0 1-2.786 5.068c-.157.1-.209.23-.207.315l.163 3.33a.752.752 0 0 1-1.094.714.75.75 0 0 1-.404-.64l-.164-3.345c-.027-.717.384-1.312.902-1.64A4.495 4.495 0 0 0 12.5 6a4.492 4.492 0 0 0-1.933-3.696c-.024.017-.067.067-.067.16v2.818a1.75 1.75 0 0 1-.767 1.448l-.75.51a1.75 1.75 0 0 1-1.966 0l-.75-.51A1.75 1.75 0 0 1 5.5 5.282V2.463c0-.092-.043-.142-.067-.159Z"></path>
+              </svg>
+              Projects
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.lucmsilva.com/#social">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-icons">
+                <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
+              </svg>
+              Social media
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.lucmsilva.com/#donate">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-icons">
+                <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
+              </svg>
+              Donate
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo">
+    <li class="nav-item">
+      <a href="https://www.lucmsilva.com/#home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-black-icons">
+          <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path>
+        </svg>
+        Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://www.lucmsilva.com/#projects">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-black-icons">
+          <path d="M5.433 2.304A4.492 4.492 0 0 0 3.5 6c0 1.598.832 3.002 2.09 3.802.518.328.929.923.902 1.64v.008l-.164 3.337a.75.75 0 1 1-1.498-.073l.163-3.33c.002-.085-.05-.216-.207-.316A5.996 5.996 0 0 1 2 6a5.993 5.993 0 0 1 2.567-4.92 1.482 1.482 0 0 1 1.673-.04c.462.296.76.827.76 1.423v2.82c0 .082.041.16.11.206l.75.51a.25.25 0 0 0 .28 0l.75-.51A.249.249 0 0 0 9 5.282V2.463c0-.596.298-1.127.76-1.423a1.482 1.482 0 0 1 1.673.04A5.993 5.993 0 0 1 14 6a5.996 5.996 0 0 1-2.786 5.068c-.157.1-.209.23-.207.315l.163 3.33a.752.752 0 0 1-1.094.714.75.75 0 0 1-.404-.64l-.164-3.345c-.027-.717.384-1.312.902-1.64A4.495 4.495 0 0 0 12.5 6a4.492 4.492 0 0 0-1.933-3.696c-.024.017-.067.067-.067.16v2.818a1.75 1.75 0 0 1-.767 1.448l-.75.51a1.75 1.75 0 0 1-1.966 0l-.75-.51A1.75 1.75 0 0 1 5.5 5.282V2.463c0-.092-.043-.142-.067-.159Z"></path>
+        </svg>
+        Projects
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://www.lucmsilva.com/#social">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-black-icons">
+          <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
+        </svg>
+        Social media
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://www.lucmsilva.com/#donate">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-black-icons">
+          <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
+        </svg>
+        Donate
+      </a>
+    </li>
+  </ul>
+  <section class="section">
+    <div class="container">
+      <h3 class="bold">Last.fm Status</h3>
+      <div class="row" id="lastNoApi">
+        <div class="s12 m12">
+          <div class="card" style="margin: 0 0 40px 0;">
+            <div class="card-content">
+              <span class="card-title">No API key found
+                <span class="right">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-white-icons">
+                    <path d="M10.5 0a5.499 5.499 0 1 1-1.288 10.848l-.932.932a.749.749 0 0 1-.53.22H7v.75a.749.749 0 0 1-.22.53l-.5.5a.749.749 0 0 1-.53.22H5v.75a.749.749 0 0 1-.22.53l-.5.5a.749.749 0 0 1-.53.22h-2A1.75 1.75 0 0 1 0 14.25v-2c0-.199.079-.389.22-.53l4.932-4.932A5.5 5.5 0 0 1 10.5 0Zm-4 5.5c-.001.431.069.86.205 1.269a.75.75 0 0 1-.181.768L1.5 12.56v1.69c0 .138.112.25.25.25h1.69l.06-.06v-1.19a.75.75 0 0 1 .75-.75h1.19l.06-.06v-1.19a.75.75 0 0 1 .75-.75h1.19l1.023-1.025a.75.75 0 0 1 .768-.18A4 4 0 1 0 6.5 5.5ZM11 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+                  </svg>
+                </span>
+              </span>
+              <p>To see what are you or someone is listening to, please insert your Last.fm API key on the field below. No data is collected.</p>
+              <form>
+                <input id="apiKeyInput" type="password" class="validate" required>
+                <label for="apiKeyInput">Insert your API key here</label>
+              </form><br>
+              <p class="red-text"><span onclick="saveToStorage();">Save key and specify user</span><a class="right" href="https://www.last.fm/api/accounts">Your API keys from Last.fm</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="lastFirstUi">
+        <div class="s12 m12">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Specify the user
+                <span class="right">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-white-icons">
+                    <path d="M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+                  </svg>
+                </span>
+              </span>
+              <p>Insert the user that you want to see info from:</p>
+              <form>
+                <input id="userInput" class="validate" required>
+                <label for="userInput">Insert the username here</label>
+              </form><br>
+              <p class="red-text"><span onclick="fetchNowPlaying();">Show stats for this user</span><span class="right" onclick="clearStorage();">Log out and remove API keys</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="lastStatus">
+        <div class="s12 m12">
+          <div class="card">
+            <div class="card-content">
+              <span class="truncate"><a class="last-user">Loading...</a> is listening to...
+                <span class="right dropdown-trigger" data-target="options">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-white-icons">
+                    <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path>
+                  </svg>
+                </span>
+              </span>
+              <ul id="options" class="dropdown-content">
+                <li><a onclick="refreshAct();">Refresh stats for this user</a></li>
+                <li><a onclick="resetToFirstState();">Check another user</a></li>
+                <li><a onclick="clearStorage();">Log out and remove API key</a></li>
+              </ul>
+              <span id="listeningTo" class="card-title truncate"><span class="artist-name">Loading...</span> - <span class="track-name">Loading...</span></span>
+              <p class="icon-align-prereq truncate"><span class="material-icons small-icons">album</span><span class="album-name">Loading...</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4 left-side">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://lastfm.freetls.fastly.net/i/u/4128a6eb29f94943c9d206c08e625904.jpg" alt="Album Art" id="albumArt">
+            </div>
+            <div class="card-content">
+              <div class="small-spacing">
+                <a class="icon-align-prereq"><span id="downloadIcn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" class="primer-white-icons small-icons">
+                    <path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"></path><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"></path>
+                  </svg>
+                </span><span id="albumArtDesc">Loading album art...</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m8 right-side">
+          <ul class="collection">
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">music_note</i>
+              <span class="title"><b>Song information</b></span>
+              <p class="truncate">Track name: <span class="track-name">Loading...</span><br>
+                Last.fm URL: <a id="trackLink">Loading...</a><br>
+                MusicBrainz MBID: <a id="trackMbid">Loading...</a>
+              </p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">mic</i>
+              <span class="title"><b>Artist information</b></span>
+              <p class="truncate">Artist name: <span class="artist-name">Loading...</span><br>
+                Last.fm URL: <a id="artistLink">Loading...</a><br>
+                MusicBrainz MBID: <a id="artistMbid">Loading...</a>
+              </p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">album</i>
+              <span class="title"><b>Album information</b></span>
+              <p class="truncate">Album name: <span class="album-name">Loading...</span><br>
+                Last.fm URL: <a id="albumLink">Loading...</a><br>
+                MusicBrainz MBID: <a id="albumMbid">Loading...</a>
+              </p>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">person</i>
+              <span class="title"><b>User information</b></span>
+              <p class="truncate">Username: <span class="last-user">Loading...</span><br>
+                Total scrobbles: <span id="userScrobbles">Loading...</span><br>
+                Last.fm URL: <a id="userLink">Loading...</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="center">
+        <div class="small-spacing">
+          <p>&copy; 2024 <a href="https://github.com/lucmsilva651" target="_blank" rel="noopener noreferrer">Lucas Gabriel (lucmsilva)</a>. Made with help of the <a href="https://materializecss.com/" target="_blank" rel="noopener noreferrer">Materialize</a> framework.</p>
+          <p>Inspired from the <a href="https://primer.style/" target="_blank" rel="noopener noreferrer">Primer Design System</a>. Icons from <a href="https://primer.style/foundations/icons/" target="_blank" rel="noopener noreferrer">Octicons</a> and <a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer">Material Design</a>.</p>
+          <p><a href="https://github.com/lucmsilva651/last-fm-status/" target="_blank" rel="noopener noreferrer">Source code on GitHub</a> • <a href="https://github.com/lucmsilva651/last-fm-status/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Licensed under BSD-3-Clause</a></p>
+        </div>
+        <br>
+      </div>
+    </div>
+  </footer>
+  <script src="javascript/lastfm.js"></script>
+  <script src="javascript/components.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
