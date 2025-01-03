@@ -134,10 +134,5 @@ dist
 # bun
 bun.lockb
 
-# built css
-public/css/header.min.css
-public/css/index.min.css
-
-# built js
-public/javascript/components.min.js
-public/javascript/lastfm.min.js
+# public
+public/
