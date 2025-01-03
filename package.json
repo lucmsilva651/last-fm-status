@@ -1,0 +1,22 @@
+{
+  "name": "last-fm-status",
+  "module": "server.js",
+  "type": "module",
+  "scripts": {
+    "minify-css": "cleancss -o public/css/index.min.css public/css/index.css && cleancss -o public/css/header.min.css public/css/header.css",
+    "minify-js": "terser public/javascript/lastfm.js -o public/javascript/lastfm.min.js && terser public/javascript/components.js -o public/javascript/components.min.js",
+    "build": "bun run minify-css && bun run minify-js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "clean-css-cli": "^5.6.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "terser": "^5.37.0"
+  }
+}
