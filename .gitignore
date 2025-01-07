@@ -130,3 +130,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .vercel
+
+# bun
+bun.lockb
+
+# public
+public/
